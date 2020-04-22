@@ -15,11 +15,22 @@ import file_converter
 
 
 UPLOAD_FOLDER = 'uploaded_files' 			  # folder location where files will be uploaded
+ALLOWED_EXTENSIONS = set(['docx', 'pdf'])     # allowed extensions
 
 # flask app configs
 app = Flask(__name__)						  # app declared
 app.secret_key = "secret key"				  # secret key defined
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER   # path to folder provided
+
+
+# extensions allowed
+def allowed_file(filename):
+	"""
+		this method is used to select
+		or display the files with 
+		specific provided extensions.
+	"""
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # to open or navigate to html page
 @app.route('/')
