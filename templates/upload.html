@@ -1,0 +1,27 @@
+<!doctype html>
+<title>File Converter</title>
+<h2>Select file(s) to upload</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" value="Submit" name="files[]" multiple="true" autocomplete="off">
+		</p>
+	</dl>
+    <p>
+		<button type="submit" name="submit_files">Click here to upload</button>
+	</p>
+	<p>
+		<button type="submit" name="process_files">Get Excel file</button>
+	</p>
+</form>
