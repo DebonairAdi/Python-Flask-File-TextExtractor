@@ -1,4 +1,4 @@
-#FILE TO TEXT CONVERTER (PDF & DOCX)
+# FILE TO TEXT CONVERTER (PDF & DOCX)
 
 • Create a local environment and install the requirement.txt file
 
