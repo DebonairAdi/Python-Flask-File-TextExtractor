@@ -75,9 +75,12 @@ def write_to_excel():
     row = 0                                                 # default row value
     col = 0                                                 # default col value
     i = 0                                                   # variable to auto inc.
+    worksheet.write(row, col, "filename")                   # write to excel default
+    worksheet.write(row, col + 1, "text")                           
     for data in range(0,int((len(data_list))/2)):
-        worksheet.write(row, col, data_list[i])             # write to excel
-        worksheet.write(row, col + 1, data_list[i+1]) 
+
+        worksheet.write(row+1, col, data_list[i])           # write to excel
+        worksheet.write(row+1, col + 1, data_list[i+1]) 
         row += 1
         i+=2
     workbook.close()                                        # excel closed after writing data
