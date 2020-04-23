@@ -14,7 +14,8 @@ from io import StringIO
 import xlsxwriter
 
 # system path related
-import os
+import os, re, os.path
+
 
 # list declared in which all data will be appended
 data_list=[]
@@ -106,12 +107,26 @@ def file_to_text_converter(filename):
         return print(filename+" can't convert this file, only pdf and docx files only")
 
 
+def delete_folder_contents():
+    """
+        this method will be executed in the
+        last and would clear the contents 
+        of the uploaded_files folder
+    """
+    folder_path = "uploaded_files"
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            os.remove(os.path.join(root, file))
+    return True
+
+
 def main():
     """
         this is the main method which
         will be called from the flask 
         application
     """
+
     try:
         uploaded_files=os.listdir("uploaded_files") # path to folder containing files
     except:
@@ -119,7 +134,9 @@ def main():
     for file_to_convert in uploaded_files:          # to get and operate each file in folder
         file_to_text_converter(file_to_convert)     # method to convert files
     write_to_excel()                                # write data to excel
-
-
+    data_list.clear()                               # empty the list
+    delete_folder_contents()                        # empty the folder
+    
+    
 if __name__ == "__main__":
     pass
