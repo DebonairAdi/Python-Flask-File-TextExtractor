@@ -25,7 +25,7 @@ MarkupSafe==1.1.1
 olefile==0.46
 passlib==1.7.2
 pdfminer.six==20181108
-Pillow==7.1.1
+Pillow==8.2.0
 pycparser==2.19
 pycryptodome==3.9.7
 python-pptx==0.6.18
